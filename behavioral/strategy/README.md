@@ -1,4 +1,4 @@
-# Strategy
+# 💡 Strategy
 
 Real world example
 

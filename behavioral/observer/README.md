@@ -1,4 +1,4 @@
-# Observer
+# 😎 Observer
 
 Real world example
 
