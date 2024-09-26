@@ -7,7 +7,7 @@
 | [Creational Design Patterns](#creational-design-patterns) | [Structural Design Patterns](#structural-design-patterns) | [Behavioral Design Patterns](#behavioral-design-patterns) |
 | :-------------------------------------------------------- | :-------------------------------------------------------- | :-------------------------------------------------------- |
 | [Simple Factory](/creational//simple-factory)             | [Adapter](/structural/adapter)                            | [Chain of Responsibility](#-chain-of-responsibility)      |
-| [Factory Method](/creational/factory-method)              | [Bridge](#-bridge)                                        | [Command](#-command)                                      |
+| [Factory Method](/creational/factory-method)              | [Bridge](/structural/bridge)                              | [Command](#-command)                                      |
 | [Abstract Factory](#-abstract-factory)                    | [Composite](#-composite)                                  | [Iterator](#-iterator)                                    |
 | [Builder](/creational/builder)                            | [Decorator](#-decorator)                                  | [Mediator](#-mediator)                                    |
 | [Prototype](#-prototype)                                  | [Facade](#-facade)                                        | [Memento](#-memento)                                      |
