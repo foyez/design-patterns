@@ -1,26 +1,26 @@
 # Design Patterns
+
 `Design patterns are reusable solutions to commonly occurring problems in software design.`
 
-## Types of Patterns
-### 1. Creational  - Used to Construct New Objects
-- Constructor: `Use to create new objects with their own object scope.`
-- Module
-- Factory
-- Singleton
+<br>
 
-### 2. Structural
-- Decorator
-- Facade
-- Flyweight
+| [Creational Design Patterns](#creational-design-patterns) | [Structural Design Patterns](#structural-design-patterns) | [Behavioral Design Patterns](#behavioral-design-patterns) |
+| :-------------------------------------------------------- | :-------------------------------------------------------- | :-------------------------------------------------------- |
+| [Simple Factory](#-simple-factory)                        | [Adapter](#-adapter)                                      | [Chain of Responsibility](#-chain-of-responsibility)      |
+| [Factory Method](#-factory-method)                        | [Bridge](#-bridge)                                        | [Command](#-command)                                      |
+| [Abstract Factory](#-abstract-factory)                    | [Composite](#-composite)                                  | [Iterator](#-iterator)                                    |
+| [Builder](#-builder)                                      | [Decorator](#-decorator)                                  | [Mediator](#-mediator)                                    |
+| [Prototype](#-prototype)                                  | [Facade](#-facade)                                        | [Memento](#-memento)                                      |
+| [Singleton](#-singleton)                                  | [Flyweight](#-flyweight)                                  | [Observer](/observer)                                     |
+|                                                           | [Proxy](#-proxy)                                          | [Visitor](#-visitor)                                      |
+|                                                           |                                                           | [Strategy](/strategy)                                     |
+|                                                           |                                                           | [State](#-state)                                          |
+|                                                           |                                                           | [Template Method](#-template-method)                      |
 
-### 3. Behavioral
-- Command
-- Mediator
-- Observer
+<br>
 
-## 1. Singleton Pattern
-- The singleton design pattern limits the number of instances of a particular object to just one
-- The single instance is called the singleton
-- This is useful when exactly one object is needed to coordinate actions across the system
-- The singleton is used like, config settings for a web app, on the client site for anything initiated with an API key
-- Example: jQuery
+Run typescript code:
+
+```sh
+npx tsx file.ts
+```
