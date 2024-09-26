@@ -1,74 +1,68 @@
-class OnlineStoreItem {
-  private name: string;
-  private stock: number;
-  private customers: Customer[];
+class JobPost {
+  protected title: string;
 
-  constructor(name: string, stock: number) {
-    this.name = name;
-    this.stock = stock;
-    this.customers = [];
+  constructor(title: string) {
+    this.title = title;
   }
 
-  public getName(): string {
-    return this.name;
-  }
-
-  public subscribe(customer: Customer) {
-    this.customers.push(customer);
-  }
-
-  public unsubscribe(customer: Customer) {
-    this.customers = this.customers.filter((c) => c !== customer);
-  }
-
-  public updateStock(newStock: number) {
-    if (this.stock === 0 && newStock > 0) {
-      this.notify();
-    }
-    this.stock = newStock;
-  }
-
-  private notify() {
-    this.customers.forEach((customer) => {
-      customer.notify(this);
-    });
+  getTitle(): string {
+    return this.title;
   }
 }
 
-class Customer {
-  private name: string;
-  private notifications: number;
+interface Observer {
+  onJobPosted(job: JobPost): void;
+}
+
+class JobSeeker implements Observer {
+  protected name: string;
 
   constructor(name: string) {
     this.name = name;
-    this.notifications = 0;
   }
 
-  public notify(item: OnlineStoreItem) {
-    console.log(`${this.name} is notified: ${item.getName()}`);
-    this.notifications++;
-  }
-
-  public countNotifications(): number {
-    return this.notifications;
+  onJobPosted(job: JobPost): void {
+    // Do something with the job posting
+    console.log(`Hi ${this.name}! New job posted: ${job.getTitle()}`);
   }
 }
 
-const item1 = new OnlineStoreItem("Cricket Bat", 0);
+interface Observable {
+  // notify(jobPosting: JobPost): void;
+  subscribe(observer: Observer): void;
+  addJob(jobPosting: JobPost): void;
+}
 
-const customer1 = new Customer("Rahim");
-const customer2 = new Customer("Karim");
+class EmploymentAgency implements Observable {
+  protected observers: Observer[] = [];
 
-item1.subscribe(customer1);
-item1.subscribe(customer2);
+  protected notify(jobPosting: JobPost): void {
+    for (const observer of this.observers) {
+      observer.onJobPosted(jobPosting);
+    }
+  }
 
-item1.updateStock(5); // customer1 and customer2 are notified
+  subscribe(observer: Observer): void {
+    this.observers.push(observer);
+  }
 
-item1.unsubscribe(customer1);
+  addJob(jobPosting: JobPost): void {
+    this.notify(jobPosting);
+  }
+}
 
-item1.updateStock(0); // No one is notified
-item1.updateStock(3); // Only customer2 is notified
-item1.updateStock(2); // No one is notified
+// Create subscribers
+const johnDoe = new JobSeeker("John Doe");
+const janeDoe = new JobSeeker("Jane Doe");
 
-console.log(customer1.countNotifications()); // 1
-console.log(customer2.countNotifications()); // 2
+// Create publisher and attach subscribers
+const jobPostings = new EmploymentAgency();
+jobPostings.subscribe(johnDoe);
+jobPostings.subscribe(janeDoe);
+
+// Add a new job and see if subscribers get notified
+jobPostings.addJob(new JobPost("Software Engineer"));
+
+// Output
+// Hi John Doe! New job posted: Software Engineer
+// Hi Jane Doe! New job posted: Software Engineer
